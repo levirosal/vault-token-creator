@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"github.com/levirosal/vault-token-creator/cmd"
 )
 
 var (
@@ -19,16 +21,16 @@ func main() {
 		policyArg := os.Args[i]
 		ttlArg := os.Args[i+1]
 
-		if policyArg[0:8] == "-policy=" && ttlArg[0:5] == "-TTL=" {
+		if policyArg[0:8] == "-policy=" && ttlArg[0:5] == "-ttl=" {
 			policy = policyArg[8:len(policyArg)]
 			ttl = ttlArg[5:len(ttlArg)]
-			fmt.Println("Creating ......")
-			//cmd.Create(policy, ttl)
-			println(policy)
-			println(ttl)
-			fmt.Println("-----------------------------------")
+			fmt.Println("Creating ...")
+			cmd.Create(policy, ttl)
 		} else {
-			panic("Wrong arguments.")
+			println("Wrong arguments: ")
+			println(policyArg)
+			println(ttlArg)
 		}
+		fmt.Println("-----------------------------------")
 	}
 }
