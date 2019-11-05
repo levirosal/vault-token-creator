@@ -23,7 +23,7 @@ func Create(policy string, ttl string) {
 
 	if err != nil {
 		fmt.Println(err)
-		return
+		panic("Could not connect to Vault API.")
 	}
 
 	fmt.Println("key                Value ")
